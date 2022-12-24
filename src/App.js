@@ -17,10 +17,10 @@ function handleClick(e) {
 //Create an array of the input
 const inputArray = input.split('');
 //Search a division
-function division() {
 const divisionIndex = inputArray.indexOf('/');
 //Get the right side of the operation
 if(divisionIndex != -1) {
+  function division() {
   const signsToRight = inputArray.findIndex((n, index) => (n === 'x' || n === '+' || n === '-') && index > divisionIndex);
   let right;
   if(signsToRight != -1) {
@@ -55,8 +55,9 @@ if(divisionIndex != -1) {
   inputArray.splice(startFragmentIndex, right.length + left.length + 1, result);
   console.log(inputArray);
   }
+  division();
 }
-division();
+
 {/*
   -There is a division sign?
     Yes:
