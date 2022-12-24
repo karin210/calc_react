@@ -17,6 +17,7 @@ function handleClick(e) {
 //Create an array of the input
 const inputArray = input.split('');
 //Search a division
+function division() {
 const divisionIndex = inputArray.indexOf('/');
 //Get the right side of the operation
 if(divisionIndex != -1) {
@@ -53,7 +54,9 @@ if(divisionIndex != -1) {
   let result = leftNumber / rightNumber;
   inputArray.splice(startFragmentIndex, right.length + left.length + 1, result);
   console.log(inputArray);
+  }
 }
+division();
 {/*
   -There is a division sign?
     Yes:
