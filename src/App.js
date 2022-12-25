@@ -11,17 +11,18 @@ function handleClick(e) {
     setInput('');
   //Update the input state's propety adding the text of the key clicked.
   } else {
-  setInput(input + e.target.innerText);
+    setInput(input + e.target.innerText);
   }
 }
 //Create an array of the input
-const inputArray = input.split('');
+let inputArray = input.split('');
+function division() {
 //Search a division
 const divisionIndex = inputArray.indexOf('/');
 //Get the right side of the operation
 if(divisionIndex != -1) {
-  function division() {
-  const signsToRight = inputArray.findIndex((n, index) => (n === 'x' || n === '+' || n === '-') && index > divisionIndex);
+  
+  const signsToRight = inputArray.findIndex((n, index) => (n === 'x' || n === '+' || n === '-' || n === '/') && index > divisionIndex);
   let right;
   if(signsToRight != -1) {
   const rightSide = inputArray.slice(divisionIndex + 1, signsToRight);
@@ -54,9 +55,15 @@ if(divisionIndex != -1) {
   let result = leftNumber / rightNumber;
   inputArray.splice(startFragmentIndex, right.length + left.length + 1, result);
   console.log(inputArray);
+  return inputArray;
   }
-  division();
+  
 }
+while(inputArray.indexOf('/') != -1) {
+division();
+}
+
+
 
 {/*
   -There is a division sign?
