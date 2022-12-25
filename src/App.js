@@ -22,7 +22,6 @@ function division() {
 const divisionIndex = inputArray.indexOf('/');
 //Get the right side of the operation
 if(divisionIndex != -1) {
-  
   const signsToRight = inputArray.findIndex((n, index) => (n === 'x' || n === '+' || n === '-' || n === '/') && index > divisionIndex);
   let right;
   if(signsToRight != -1) {
@@ -55,7 +54,6 @@ if(divisionIndex != -1) {
   let rightNumber = Number(right.join(''));
   let result = leftNumber / rightNumber;
   inputArray.splice(startFragmentIndex, right.length + left.length + 1, result);
-  console.log(inputArray);
   return inputArray;
   }
   
@@ -68,10 +66,20 @@ division();
 const multIndex = inputArray.indexOf('x');
 //Get the right side of the operation
 if(multIndex != -1) {
-console.log('yeah');
+  const signsToRight = inputArray.findIndex((n, index) => (n === 'x' || n === '+' || n === '-' || n === '/') && index > multIndex);
+  let right;
+  if(signsToRight != -1) {
+  const rightSide = inputArray.slice(multIndex + 1, signsToRight);
+  right = rightSide;
+  console.log(right);
+
+  } else {
+    const rightSide = inputArray.slice(multIndex + 1);
+    right = rightSide;
+    console.log(right);
+    
+  }
 }
-
-
 
 
 {/*
