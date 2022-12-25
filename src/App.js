@@ -62,6 +62,7 @@ while(inputArray.indexOf('/') != -1) {
 division();
 }
 
+function multiplication() {
 //Search a multiplication
 const multIndex = inputArray.indexOf('x');
 //Get the right side of the operation
@@ -71,15 +72,45 @@ if(multIndex != -1) {
   if(signsToRight != -1) {
   const rightSide = inputArray.slice(multIndex + 1, signsToRight);
   right = rightSide;
-  console.log(right);
 
   } else {
     const rightSide = inputArray.slice(multIndex + 1);
     right = rightSide;
-    console.log(right);
     
   }
+   //Get the left side of the operation
+  //Find an operator on the left
+  let left;
+  let startFragmentIndex;
+  for(let i = multIndex; i >= 0 ; i--) {
+    const element = inputArray[i];
+    if(element === '/' || element === '+' || element === '-') {
+      const leftSide = inputArray.slice(i + 1, multIndex);
+      left = leftSide;
+      startFragmentIndex = i + 1;
+      break;
+    } else {
+      const leftSide = inputArray.slice(0, multIndex);
+      left = leftSide;
+      startFragmentIndex = 0;
+    }
+  }
+  //Excecute left and right and embeed the result
+  let leftNumber = Number(left.join(''));
+  let rightNumber = Number(right.join(''));
+  let result = leftNumber * rightNumber;
+  inputArray.splice(startFragmentIndex, right.length + left.length + 1, result);
+  console.log(inputArray);
+  return inputArray;
+  }
+
+  
 }
+while(inputArray.indexOf('x') != -1) {
+multiplication();
+}
+
+
 
 
 {/*
@@ -101,10 +132,19 @@ if(multIndex != -1) {
     Yes: 
       Repeat the previous steps.
     No: 
->>>  -There is a multiplication sign?
+  -There is a multiplication sign?
     Yes:
       -There is an operator on the right?
-
+        Yes:
+          -Slice from the multiplication operator + 1 to the next operator
+        No: 
+          -Slice from the multiplication operator + 1 omitting the end.
+      -There is an operator on the left?
+        Yes:
+         -Slice from the left operator + 1 to the multiplication operator.
+        No:
+         -Slice from start until the division operator.
+      -Become left and right to type number and asign a variable to store left / right.
 */}
 
   return (
