@@ -16,8 +16,9 @@ function handleClick(e) {
 }
 //Create an array of the input
 let inputArray = input.split('');
-function division() {
+
 //Search a division
+function division() {
 const divisionIndex = inputArray.indexOf('/');
 //Get the right side of the operation
 if(divisionIndex != -1) {
@@ -63,6 +64,14 @@ while(inputArray.indexOf('/') != -1) {
 division();
 }
 
+//Search a multiplication
+const multIndex = inputArray.indexOf('x');
+//Get the right side of the operation
+if(multIndex != -1) {
+console.log('yeah');
+}
+
+
 
 
 {/*
@@ -82,7 +91,12 @@ division();
       -Replace the fragment of the operation with the result of left / right.
   -Repeat There is a division sign?
     Yes: 
-      Repeat the previous steps
+      Repeat the previous steps.
+    No: 
+>>>  -There is a multiplication sign?
+    Yes:
+      -There is an operator on the right?
+
 */}
 
   return (
