@@ -165,16 +165,20 @@ while(inputArray.findIndex((elem) => elem === '+' || elem === '-') != -1) {
   addOrSub();
   }
   //Show the result on the screen
-  //!Bug: when clicking '=' the screen print just the first element of the inputArray
-  let result = inputArray[0] + '';
 function showResult() {
+  let result;
+  if(inputArray.length > 1) {
+    result = inputArray.join('');
+  } else {
+    result = inputArray[0] + '';
+  }
  setInput(result);
 }
 
 {/*
 Bugs finded:
   - (Line: 120) If the ecuation begins with '+' or '-' the algorithm gonna take the numbers next the sign as the right side of the expression and all the execution fails. 
-  - When clicking '=' the screen print just the first element of the inputArray
+  -The result has a lot of decimals.
  */}
 
 {/*
