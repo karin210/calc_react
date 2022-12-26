@@ -118,6 +118,9 @@ const sumOrMinusIndex = inputArray.findIndex((elem) => elem === '+' || elem === 
  -If the ecuation begins with '+' or '-' the algorithm gonna take the numbers next the sign as the right side of the expression and all the execution fails.
 */}
 if(sumOrMinusIndex != -1) {
+  console.log('here is a + or a -');
+  console.log(inputArray);
+  //If there is a '+' or '-' sign in inputArray[0]
   const signsToRight = inputArray.findIndex((n, index) => (n === 'x' || n === '+' || n === '-' || n === '/') && index > sumOrMinusIndex);
   let right;
   if(signsToRight != -1) {
@@ -167,18 +170,22 @@ while(inputArray.findIndex((elem) => elem === '+' || elem === '-') != -1) {
   //Show the result on the screen
 function showResult() {
   let result;
+  //If there are several elements in inputArray at time to click '=' join it.
   if(inputArray.length > 1) {
     result = inputArray.join('');
+    
   } else {
     result = inputArray[0] + '';
   }
+
  setInput(result);
 }
 
 {/*
 Bugs finded:
-  - (Line: 120) If the ecuation begins with '+' or '-' the algorithm gonna take the numbers next the sign as the right side of the expression and all the execution fails. 
+  - (Line: 120) If the ecuation begins with '+' or '-' the algorithm gonna take the numbers next the sign as the right side of the expression and all the execution fails.
   -The result has a lot of decimals.
+  - If let 'result' is not a string it doesn't works.
  */}
 
 {/*
@@ -297,11 +304,11 @@ Bugs finded:
        />
       <Key
       keySign = '+' 
-        handleClick = {handleClick}
+      handleClick = {handleClick}
       />
       <Key
       keySign = '-' 
-        handleClick = {handleClick}
+      handleClick = {handleClick}
       />
       <Key
       keySign = '0'
