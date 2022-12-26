@@ -100,7 +100,6 @@ if(multIndex != -1) {
   let rightNumber = Number(right.join(''));
   let result = leftNumber * rightNumber;
   inputArray.splice(startFragmentIndex, right.length + left.length + 1, result);
-  console.log(inputArray);
   return inputArray;
   }
 
@@ -109,7 +108,6 @@ if(multIndex != -1) {
 while(inputArray.indexOf('x') != -1) {
 multiplication();
 }
-
 
 
 
@@ -132,6 +130,7 @@ multiplication();
     Yes: 
       Repeat the previous steps.
     No: 
+
   -There is a multiplication sign?
     Yes:
       -There is an operator on the right?
@@ -143,8 +142,15 @@ multiplication();
         Yes:
          -Slice from the left operator + 1 to the multiplication operator.
         No:
-         -Slice from start until the division operator.
+         -Slice from start until the multiplication operator.
       -Become left and right to type number and asign a variable to store left / right.
+      -Replace the fragment of the operation with the result of left * right.
+  -Repeat There is a multiplication sign?
+    Yes: 
+      Repeat the previous steps.
+    No: 
+
+  
 */}
 
   return (
