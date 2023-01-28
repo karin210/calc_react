@@ -21,10 +21,10 @@ let inputArray = input.split('');
 function division() {
 const divisionIndex = inputArray.indexOf('/');
 //Get the right side of the operation
-if(divisionIndex != -1) {
+if(divisionIndex !== -1) {
   const signsToRight = inputArray.findIndex((n, index) => (n === 'x' || n === '+' || n === '-' || n === '/') && index > divisionIndex);
   let right;
-  if(signsToRight != -1) {
+  if(signsToRight !== -1) {
   const rightSide = inputArray.slice(divisionIndex + 1, signsToRight);
   right = rightSide;
 
@@ -58,7 +58,7 @@ if(divisionIndex != -1) {
   }
   
 }
-while(inputArray.indexOf('/') != -1) {
+while(inputArray.indexOf('/') !== -1) {
 division();
 }
 
@@ -66,10 +66,10 @@ function multiplication() {
 //Search a multiplication
 const multIndex = inputArray.indexOf('x');
 //Get the right side of the operation
-if(multIndex != -1) {
+if(multIndex !== -1) {
   const signsToRight = inputArray.findIndex((n, index) => (n === 'x' || n === '+' || n === '-' || n === '/') && index > multIndex);
   let right;
-  if(signsToRight != -1) {
+  if(signsToRight !== -1) {
   const rightSide = inputArray.slice(multIndex + 1, signsToRight);
   right = rightSide;
 
@@ -105,7 +105,7 @@ if(multIndex != -1) {
 
   
 }
-while(inputArray.indexOf('x') != -1) {
+while(inputArray.indexOf('x') !== -1) {
 multiplication();
 }
 
@@ -113,17 +113,17 @@ function addOrSub() {
 //Search an adition or subtraction
 const sumOrMinusIndex = inputArray.findIndex((elem) => elem === '+' || elem === '-');
 //Get the right side of the operation
-{/*
+/*
 !Bugs
  -If the ecuation begins with '+' or '-' the algorithm gonna take the numbers next the sign as the right side of the expression and all the execution fails.
-*/}
-if(sumOrMinusIndex != -1) {
+*/
+if(sumOrMinusIndex !== -1) {
   console.log('here is a + or a -');
   console.log(inputArray);
   //If there is a '+' or '-' sign in inputArray[0]
   const signsToRight = inputArray.findIndex((n, index) => (n === 'x' || n === '+' || n === '-' || n === '/') && index > sumOrMinusIndex);
   let right;
-  if(signsToRight != -1) {
+  if(signsToRight !== -1) {
   const rightSide = inputArray.slice(sumOrMinusIndex + 1, signsToRight);
   right = rightSide;
 
@@ -164,7 +164,7 @@ if(sumOrMinusIndex != -1) {
   return inputArray;
   }
 }
-while(inputArray.findIndex((elem) => elem === '+' || elem === '-') != -1) {
+while(inputArray.findIndex((elem) => elem === '+' || elem === '-') !== -1) {
   addOrSub();
   }
   //Show the result on the screen
@@ -181,14 +181,14 @@ function showResult() {
  setInput(result);
 }
 
-{/*
+/*
 Bugs finded:
   - (Line: 120) If the ecuation begins with '+' or '-' the algorithm gonna take the numbers next the sign as the right side of the expression and all the execution fails.
   -The result has a lot of decimals.
   - If let 'result' is not a string it doesn't works.
- */}
+ */
 
-{/*
+/*
   -There is a division sign?
     Yes:
       -There is an operator on the right?
@@ -241,7 +241,7 @@ Bugs finded:
       -Become left and right to type number and asign a variable to store left + or - right.
 
   
-*/}
+*/
 
   return (
     <div className="App">
