@@ -78,7 +78,7 @@
 }
 
 .equal::before {
-  content: " ";
+  content: "";
   position: absolute;
   width: 58px;
   height: 56px;
