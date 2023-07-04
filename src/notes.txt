@@ -1,0 +1,2 @@
+ 1- adjust the app height to delete the vertical scroll
+ 

@@ -1,6 +1,24 @@
+/* Properties are setted on the following order:
+
+1. Display related and positioning (element nature).
+2. shapping.
+3. font
+4. arrange.
+5. color.
+
+*/
+
 .App {
-  margin: 0 auto;
   width: 100%;
   border: 1px solid;
-  margin-top: 50px;
+}
+
+.keyboard {
+  display: flex;
+  height: 58vh;
+  padding: 20px 0;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 27px;
+  background-color: #0f0f0f;
 }
