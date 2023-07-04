@@ -1,10 +1,11 @@
-import './Styles/Screen.css';
-
+import "./Styles/Screen.css";
 
 function Screen(props) {
-    return(
-        <div id='screen'>{props.screenText}</div>
-    );
+  return (
+    <section className="screen">
+      <div className="textBox">{props.screenText}</div>
+    </section>
+  );
 }
 
 export default Screen;
