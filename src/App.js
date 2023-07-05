@@ -14,14 +14,19 @@ function App() {
       setInput(input + e.target.innerText);
     }
   }
-  // Here the handeClick function ends!!!
-  function showResult() {
+
+  function execute() {
     //Create an array of the input
     let inputArray = input.split("");
 
     // if start with + skip it;
     if (inputArray.indexOf("+") === 0) {
-      // inputArray.shift();
+      inputArray.shift();
+    }
+
+    // If start with - add a 0 at the biginning
+    if (inputArray.indexOf("-") === 0) {
+      inputArray.unshift("0");
     }
     //Search a division
     function division() {
@@ -136,9 +141,7 @@ function App() {
  -If the ecuation begins with '+' or '-' the algorithm gonna take the numbers next the sign as the right side of the expression and all the execution fails.
 */
       if (sumOrMinusIndex !== -1) {
-        // console.log("here is a + or a -");
-        // console.log(inputArray);
-        //If there is a '+' or '-' sign in inputArray[0]
+        //If there is a '+' or '-' signin inputArray[0]
         const signsToRight = inputArray.findIndex(
           (n, index) =>
             (n === "x" || n === "+" || n === "-" || n === "/") &&
@@ -174,7 +177,10 @@ function App() {
             startFragmentIndex = 0;
           }
         }
+
         //Excecute left and right and embeed the result
+
+        // let leftNumber = left ? Number(left.join("")) : ["0"];
         let leftNumber = Number(left.join(""));
         let rightNumber = Number(right.join(""));
         let total;
@@ -185,6 +191,10 @@ function App() {
           let result = leftNumber - rightNumber;
           total = result;
         }
+
+        // Bug left is undefined
+
+        console.log(leftNumber, rightNumber);
         inputArray.splice(
           startFragmentIndex,
           right.length + left.length + 1,
@@ -292,7 +302,7 @@ Bugs finded:
         <Key keySign="+" class="operator" handleClick={handleClick} />
         <Key keySign="0" handleClick={handleClick} class="number" />
         <Key keySign="&#8226;" class="dot" handleClick={handleClick} />
-        <Key keySign="=" class="equal" handleTotal={showResult} />
+        <Key keySign="=" class="equal" handleTotal={execute} />
         <Key keySign="-" class="operator" handleClick={handleClick} />
         <Key keySign="AC" class="reset" handleClick={handleClick} />
       </div>
