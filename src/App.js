@@ -282,7 +282,7 @@ Bugs finded:
         <Key keySign="9" handleClick={handleClick} class="number" />
         <Key keySign="+" class="operator" handleClick={handleClick} />
         <Key keySign="0" handleClick={handleClick} class="number" />
-        <Key keySign="." class="dot" handleClick={handleClick} />
+        <Key keySign="&#8226;" class="dot" handleClick={handleClick} />
         <Key keySign="=" class="equal" handleTotal={showResult} />
         <Key keySign="-" class="operator" handleClick={handleClick} />
         <Key keySign="AC" class="reset" handleClick={handleClick} />
