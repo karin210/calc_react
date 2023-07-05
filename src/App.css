@@ -30,3 +30,9 @@
     justify-items: center;
   }
 }
+
+@media (min-width: 715px) {
+  .keyboard {
+    justify-items: center;
+  }
+}

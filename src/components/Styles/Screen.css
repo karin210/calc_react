@@ -1,8 +1,8 @@
 .screen {
-  font-size: 2rem;
+  display: flex;
   height: 25vh;
   width: 100%;
-  display: flex;
+  font-size: 2rem;
   align-items: flex-end;
   background-image: url("../../../public/cheng-3-E5ac0oudiJQ-unsplash.jpg");
   background-position: center;
@@ -17,4 +17,14 @@
   background-color: rgb(14, 14, 14);
   color: white;
   font-family: "Lato", sans-serif;
+}
+
+@media (min-width: 715px) {
+  .screen {
+    font-size: 3.5rem;
+  }
+
+  .textBox {
+    padding-right: 15%;
+  }
 }

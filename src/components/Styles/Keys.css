@@ -162,3 +162,46 @@
     height: 33px;
   }
 }
+
+@media (min-width: 715px) {
+  .number,
+  .dot,
+  .equal {
+    width: 90px;
+    height: 90px;
+    font-size: 2rem;
+    padding-top: 4px;
+  }
+
+  .number::before,
+  .dot::before,
+  .equal::before {
+    width: 86px;
+    height: 86px;
+  }
+
+  .operator {
+    width: 120px;
+    height: 70px;
+    font-size: 2.5rem;
+  }
+
+  .operator::before {
+    width: 117px;
+    height: 67px;
+    right: 1.7px;
+    bottom: 2px;
+  }
+
+  .reset {
+    width: 160px;
+    height: 70px;
+    font-size: 2rem;
+    grid-area: -2 / -2;
+  }
+
+  .reset::before {
+    width: 157px;
+    height: 67px;
+  }
+}
