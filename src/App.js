@@ -9,189 +9,198 @@ function App() {
     //Clear button.
     if (e.target.innerText === "AC") {
       setInput("");
-      //Update the input state's propety adding the text of the key clicked.
+      //Update the input state adding the text of the key clicked.
     } else {
       setInput(input + e.target.innerText);
     }
   }
-  //Create an array of the input
-  let inputArray = input.split("");
+  // Here the handeClick function ends!!!
+  function showResult() {
+    //Create an array of the input
+    let inputArray = input.split("");
 
-  //Search a division
-  function division() {
-    const divisionIndex = inputArray.indexOf("/");
-    //Get the right side of the operation
-    if (divisionIndex !== -1) {
-      const signsToRight = inputArray.findIndex(
-        (n, index) =>
-          (n === "x" || n === "+" || n === "-" || n === "/") &&
-          index > divisionIndex
-      );
-      let right;
-      if (signsToRight !== -1) {
-        const rightSide = inputArray.slice(divisionIndex + 1, signsToRight);
-        right = rightSide;
-      } else {
-        const rightSide = inputArray.slice(divisionIndex + 1);
-        right = rightSide;
-      }
-      //Get the left side of the operation
-      //Find an operator on the left
-      let left;
-      let startFragmentIndex;
-      for (let i = divisionIndex; i >= 0; i--) {
-        const element = inputArray[i];
-        if (element === "x" || element === "+" || element === "-") {
-          const leftSide = inputArray.slice(i + 1, divisionIndex);
-          left = leftSide;
-          startFragmentIndex = i + 1;
-          break;
-        } else {
-          const leftSide = inputArray.slice(0, divisionIndex);
-          left = leftSide;
-          startFragmentIndex = 0;
-        }
-      }
-      //Excecute left and right and embeed the result
-      let leftNumber = Number(left.join(""));
-      let rightNumber = Number(right.join(""));
-      let result = leftNumber / rightNumber;
-      inputArray.splice(
-        startFragmentIndex,
-        right.length + left.length + 1,
-        result
-      );
-      return inputArray;
+    // if start with + skip it;
+    if (inputArray.indexOf("+") === 0) {
+      // inputArray.shift();
     }
-  }
-  while (inputArray.indexOf("/") !== -1) {
-    division();
-  }
-
-  function multiplication() {
-    //Search a multiplication
-    const multIndex = inputArray.indexOf("x");
-    //Get the right side of the operation
-    if (multIndex !== -1) {
-      const signsToRight = inputArray.findIndex(
-        (n, index) =>
-          (n === "x" || n === "+" || n === "-" || n === "/") &&
-          index > multIndex
-      );
-      let right;
-      if (signsToRight !== -1) {
-        const rightSide = inputArray.slice(multIndex + 1, signsToRight);
-        right = rightSide;
-      } else {
-        const rightSide = inputArray.slice(multIndex + 1);
-        right = rightSide;
-      }
-      //Get the left side of the operation
-      //Find an operator on the left
-      let left;
-      let startFragmentIndex;
-      for (let i = multIndex; i >= 0; i--) {
-        const element = inputArray[i];
-        if (element === "/" || element === "+" || element === "-") {
-          const leftSide = inputArray.slice(i + 1, multIndex);
-          left = leftSide;
-          startFragmentIndex = i + 1;
-          break;
+    //Search a division
+    function division() {
+      const divisionIndex = inputArray.indexOf("/");
+      if (divisionIndex !== -1) {
+        //Get the right side of the operation
+        const signsToRight = inputArray.findIndex(
+          (n, index) =>
+            (n === "x" || n === "+" || n === "-" || n === "/") &&
+            index > divisionIndex
+        );
+        let right;
+        if (signsToRight !== -1) {
+          const rightSide = inputArray.slice(divisionIndex + 1, signsToRight);
+          right = rightSide;
         } else {
-          const leftSide = inputArray.slice(0, multIndex);
-          left = leftSide;
-          startFragmentIndex = 0;
+          const rightSide = inputArray.slice(divisionIndex + 1);
+          right = rightSide;
         }
+        //Get the left side of the operation
+        //Find an operator on the left
+        let left;
+        let startFragmentIndex;
+        for (let i = divisionIndex; i >= 0; i--) {
+          const element = inputArray[i];
+          if (element === "x" || element === "+" || element === "-") {
+            const leftSide = inputArray.slice(i + 1, divisionIndex);
+            left = leftSide;
+            startFragmentIndex = i + 1;
+            break;
+          } else {
+            const leftSide = inputArray.slice(0, divisionIndex);
+            left = leftSide;
+            startFragmentIndex = 0;
+          }
+        }
+        //Excecute left and right and embeed the result
+        let leftNumber = Number(left.join(""));
+        let rightNumber = Number(right.join(""));
+        let result = leftNumber / rightNumber;
+        inputArray.splice(
+          startFragmentIndex,
+          right.length + left.length + 1,
+          result
+        );
+        return inputArray;
       }
-      //Excecute left and right and embeed the result
-      let leftNumber = Number(left.join(""));
-      let rightNumber = Number(right.join(""));
-      let result = leftNumber * rightNumber;
-      inputArray.splice(
-        startFragmentIndex,
-        right.length + left.length + 1,
-        result
-      );
-      return inputArray;
     }
-  }
-  while (inputArray.indexOf("x") !== -1) {
-    multiplication();
-  }
+    while (inputArray.indexOf("/") !== -1) {
+      division();
+    }
 
-  function addOrSub() {
-    //Search an adition or subtraction
-    const sumOrMinusIndex = inputArray.findIndex(
-      (elem) => elem === "+" || elem === "-"
-    );
-    //Get the right side of the operation
-    /*
+    function multiplication() {
+      //Search a multiplication
+      const multIndex = inputArray.indexOf("x");
+      //Get the right side of the operation
+      if (multIndex !== -1) {
+        const signsToRight = inputArray.findIndex(
+          (n, index) =>
+            (n === "x" || n === "+" || n === "-" || n === "/") &&
+            index > multIndex
+        );
+        let right;
+        if (signsToRight !== -1) {
+          const rightSide = inputArray.slice(multIndex + 1, signsToRight);
+          right = rightSide;
+        } else {
+          const rightSide = inputArray.slice(multIndex + 1);
+          right = rightSide;
+        }
+        //Get the left side of the operation
+        //Find an operator on the left
+        let left;
+        let startFragmentIndex;
+        for (let i = multIndex; i >= 0; i--) {
+          const element = inputArray[i];
+          if (element === "/" || element === "+" || element === "-") {
+            const leftSide = inputArray.slice(i + 1, multIndex);
+            left = leftSide;
+            startFragmentIndex = i + 1;
+            break;
+          } else {
+            const leftSide = inputArray.slice(0, multIndex);
+            left = leftSide;
+            startFragmentIndex = 0;
+          }
+        }
+        //Excecute left and right and embeed the result
+        let leftNumber = Number(left.join(""));
+        let rightNumber = Number(right.join(""));
+        let result = leftNumber * rightNumber;
+        inputArray.splice(
+          startFragmentIndex,
+          right.length + left.length + 1,
+          result
+        );
+        return inputArray;
+      }
+    }
+    while (inputArray.indexOf("x") !== -1) {
+      multiplication();
+    }
+
+    function addOrSub() {
+      //Search an adition or subtraction
+      const sumOrMinusIndex = inputArray.findIndex(
+        (elem) => elem === "+" || elem === "-"
+      );
+      //Get the right side of the operation
+      /*
 !Bugs
  -If the ecuation begins with '+' or '-' the algorithm gonna take the numbers next the sign as the right side of the expression and all the execution fails.
 */
-    if (sumOrMinusIndex !== -1) {
-      // console.log("here is a + or a -");
-      // console.log(inputArray);
-      //If there is a '+' or '-' sign in inputArray[0]
-      const signsToRight = inputArray.findIndex(
-        (n, index) =>
-          (n === "x" || n === "+" || n === "-" || n === "/") &&
-          index > sumOrMinusIndex
-      );
-      let right;
-      if (signsToRight !== -1) {
-        const rightSide = inputArray.slice(sumOrMinusIndex + 1, signsToRight);
-        right = rightSide;
-      } else {
-        const rightSide = inputArray.slice(sumOrMinusIndex + 1);
-        right = rightSide;
-      }
-      //Get the left side of the operation
-      //Find an operator on the left
-      let left;
-      let startFragmentIndex;
-      for (let i = sumOrMinusIndex - 1; i >= 0; i--) {
-        const element = inputArray[i];
-        if (
-          element === "/" ||
-          element === "+" ||
-          element === "-" ||
-          element === "x"
-        ) {
-          const leftSide = inputArray.slice(i + 1, sumOrMinusIndex);
-          left = leftSide;
-          startFragmentIndex = i + 1;
-          break;
+      if (sumOrMinusIndex !== -1) {
+        // console.log("here is a + or a -");
+        // console.log(inputArray);
+        //If there is a '+' or '-' sign in inputArray[0]
+        const signsToRight = inputArray.findIndex(
+          (n, index) =>
+            (n === "x" || n === "+" || n === "-" || n === "/") &&
+            index > sumOrMinusIndex
+        );
+        let right;
+        if (signsToRight !== -1) {
+          const rightSide = inputArray.slice(sumOrMinusIndex + 1, signsToRight);
+          right = rightSide;
         } else {
-          const leftSide = inputArray.slice(0, sumOrMinusIndex);
-          left = leftSide;
-          startFragmentIndex = 0;
+          const rightSide = inputArray.slice(sumOrMinusIndex + 1);
+          right = rightSide;
         }
+        //Get the left side of the operation
+        //Find an operator on the left
+        let left;
+        let startFragmentIndex;
+        for (let i = sumOrMinusIndex - 1; i >= 0; i--) {
+          const element = inputArray[i];
+          if (
+            element === "/" ||
+            element === "+" ||
+            element === "-" ||
+            element === "x"
+          ) {
+            const leftSide = inputArray.slice(i + 1, sumOrMinusIndex);
+            left = leftSide;
+            startFragmentIndex = i + 1;
+            break;
+          } else {
+            const leftSide = inputArray.slice(0, sumOrMinusIndex);
+            left = leftSide;
+            startFragmentIndex = 0;
+          }
+        }
+        //Excecute left and right and embeed the result
+        let leftNumber = Number(left.join(""));
+        let rightNumber = Number(right.join(""));
+        let total;
+        if (inputArray[sumOrMinusIndex] === "+") {
+          let result = leftNumber + rightNumber;
+          total = result;
+        } else {
+          let result = leftNumber - rightNumber;
+          total = result;
+        }
+        inputArray.splice(
+          startFragmentIndex,
+          right.length + left.length + 1,
+          total
+        );
+        return inputArray;
       }
-      //Excecute left and right and embeed the result
-      let leftNumber = Number(left.join(""));
-      let rightNumber = Number(right.join(""));
-      let total;
-      if (inputArray[sumOrMinusIndex] === "+") {
-        let result = leftNumber + rightNumber;
-        total = result;
-      } else {
-        let result = leftNumber - rightNumber;
-        total = result;
-      }
-      inputArray.splice(
-        startFragmentIndex,
-        right.length + left.length + 1,
-        total
-      );
-      return inputArray;
     }
-  }
-  while (inputArray.findIndex((elem) => elem === "+" || elem === "-") !== -1) {
-    addOrSub();
-  }
-  //Show the result on the screen
-  function showResult() {
+    while (
+      inputArray.findIndex((elem) => elem === "+" || elem === "-") !== -1
+    ) {
+      addOrSub();
+    }
+
+    //Show the result on the screen
+
     let result;
     //If there are several elements in inputArray at time to click '=' join it.
     if (inputArray.length > 1) {
