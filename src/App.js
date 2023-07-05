@@ -192,9 +192,6 @@ function App() {
           total = result;
         }
 
-        // Bug left is undefined
-
-        console.log(leftNumber, rightNumber);
         inputArray.splice(
           startFragmentIndex,
           right.length + left.length + 1,
