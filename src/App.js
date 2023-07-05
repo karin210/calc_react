@@ -14,6 +14,9 @@ function App() {
       setInput(input + e.target.innerText);
     }
   }
+  function handleBack() {
+    setInput(input.slice(0, input.length - 1));
+  }
 
   function execute() {
     //Create an array of the input
@@ -298,9 +301,10 @@ Bugs finded:
         <Key keySign="9" handleClick={handleClick} class="number" />
         <Key keySign="+" class="operator" handleClick={handleClick} />
         <Key keySign="0" handleClick={handleClick} class="number" />
-        <Key keySign="&#8226;" class="dot" handleClick={handleClick} />
+        <Key keySign="." class="dot" handleClick={handleClick} />
         <Key keySign="=" class="equal" handleTotal={execute} />
         <Key keySign="-" class="operator" handleClick={handleClick} />
+        <Key keySign="Back" class="back" handleClick={handleBack} />
         <Key keySign="AC" class="reset" handleClick={handleClick} />
       </div>
     </div>
