@@ -23,3 +23,10 @@
   justify-content: center;
   background-color: #0f0f0f;
 }
+
+@media (orientation: landscape) and (max-width: 714px) {
+  .keyboard {
+    grid-template: repeat(5, 1fr) / repeat(4, 12%);
+    justify-items: center;
+  }
+}

@@ -119,3 +119,46 @@
 .reset:active::before {
   background: radial-gradient(circle, #042082, 54%, #1e1e1e);
 }
+
+@media (orientation: landscape) and (max-width: 714px) {
+  .number,
+  .dot,
+  .equal {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+    padding-top: 4px;
+  }
+
+  .number::before,
+  .dot::before,
+  .equal::before {
+    width: 31px;
+    height: 31px;
+  }
+
+  .operator {
+    width: 55px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+
+  .operator::before {
+    width: 52px;
+    height: 31.2px;
+    right: 1.2px;
+    bottom: 2px;
+  }
+
+  .reset {
+    width: 100px;
+    height: 36px;
+    font-size: 1.1rem;
+    grid-area: -2 / -2;
+  }
+
+  .reset::before {
+    width: 96px;
+    height: 33px;
+  }
+}
